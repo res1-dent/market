@@ -1,0 +1,1 @@
+C:\Users\User\AndroidStudioProjects\markettogether\buildSrc\build\classes\kotlin\main\Dependencies.class;C:\Users\User\AndroidStudioProjects\markettogether\buildSrc\build\classes\kotlin\main\GradleUtilsKt.class
