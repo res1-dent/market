@@ -16,6 +16,8 @@
             <option value="$PROJECT_DIR$/core_network" />
             <option value="$PROJECT_DIR$/core_network/core_network_api" />
             <option value="$PROJECT_DIR$/core_network/core_network_impl" />
+            <option value="$PROJECT_DIR$/shopping" />
+            <option value="$PROJECT_DIR$/shopping/feature_shopping" />
           </set>
         </option>
       </GradleProjectSettings>

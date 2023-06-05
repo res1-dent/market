@@ -1,3 +1,4 @@
+
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
@@ -7,13 +8,6 @@ android {
     namespace = "ru.hometech.core_common"
     compileSdk = 33
 
-    defaultConfig {
-        minSdk = 24
-        targetSdk = 33
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles("consumer-rules.pro")
-    }
 
     buildTypes {
         release {
@@ -31,7 +25,16 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+    @Suppress("UnstableApiUsage")
+    buildFeatures {
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = Dependencies.composeCompilerVersion
+    }
 }
 dependencies {
     implementation(kotlin("reflect"))
+    implement(Dependencies.compose)
+    implementation(Dependencies.dagger)
 }

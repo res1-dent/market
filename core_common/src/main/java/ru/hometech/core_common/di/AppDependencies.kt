@@ -1,4 +1,4 @@
-package ru.hometech.core_common
+package ru.hometech.core_common.di
 
 import android.content.Context
 
