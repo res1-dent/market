@@ -2,86 +2,56 @@ package ru.hometech.feature_shopping.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.channels.awaitClose
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.callbackFlow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.tasks.await
-import java.util.UUID
+import kotlinx.coroutines.withContext
+import ru.hometech.core_common.BaseViewModel
+import ru.hometech.core_common.IntentProcessor
+import ru.hometech.feature_shopping.ui.state.ShoppingIntent
+import ru.hometech.feature_shopping.ui.state.ShoppingViewState
+import ru.hometech.feature_shopping.usecases.IntentHandler
 import javax.inject.Inject
 
-class ShoppingViewModel @Inject constructor() : ViewModel() {
 
-    private val db = Firebase.firestore
-
-    private val _state: MutableStateFlow<ShoppingState> = MutableStateFlow(ShoppingState.EMPTY)
-
-    val state: StateFlow<ShoppingState> = _state.asStateFlow()
-
+class TestViewModel @Inject constructor() : ViewModel()
+class ShoppingViewModel @Inject constructor(
+    private val intentHandler: IntentHandler
+) : BaseViewModel<ShoppingViewState, ShoppingIntent>(ShoppingViewState.INITIAL) {
     init {
-        viewModelScope.launch(Dispatchers.IO) {
-            getAllProductsFlow().onEach { products ->
-                _state.update {
-                    it.copy(products = products)
-                }
-            }.collect()
+        viewModelScope.launch {
+            submitIntent(ShoppingIntent.GetAllProductsFlow)
         }
     }
 
+    override suspend fun processIntent(intent: ShoppingIntent) {
 
-    private fun getAllProductsFlow(): Flow<List<Product>> = callbackFlow {
-        val listener = db
-            .collection("Products")
-            .addSnapshotListener { value, _ ->
-                value?.let {
-                    trySend(it.map { ss ->
-                        ss.toObject(Product::class.java).copy(id = ss.id)
-                    })
+        when (intent) {
+            is ShoppingIntent.AddProduct -> {
+                intentHandler.handleAddProduct(intent.productUi)
+            }
+
+            is ShoppingIntent.UpdateSearcherId -> {
+                intentHandler.handleUpdateSearcherId(
+                    intent.productId,
+                    intent.changeSearcherType
+                )
+            }
+
+            is ShoppingIntent.DeleteProduct -> intentHandler.handleDeleteProduct(intent.id)
+            ShoppingIntent.GetAllProductsFlow -> getAllProductsFlow()
+
+        }
+    }
+
+    private fun getAllProductsFlow() {
+        viewModelScope.launch {
+            intentHandler.handleGetAllProductsFlow().collect { products ->
+                _state.update {
+                    it.copy(productList = products)
                 }
             }
-        awaitClose {
-            listener.remove()
         }
-    }
-
-    fun addProduct(product: Product) {
-        viewModelScope.launch(Dispatchers.IO) {
-            db
-                .collection("Products")
-                .add(product)
-                .await()
-        }
-    }
-
-    fun deleteProduct(id: String) {
-        viewModelScope.launch(Dispatchers.IO) {
-            db
-                .collection("Products")
-                .document(id)
-                .delete().await()
-        }
-    }
-}
-
-
-data class Product(
-    val id: String = UUID.randomUUID().toString(),
-    val name: String = ""
-)
-
-data class ShoppingState(
-    val products: List<Product> = emptyList()
-) {
-    companion object {
-        val EMPTY = ShoppingState()
     }
 }

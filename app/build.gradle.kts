@@ -55,8 +55,9 @@ android {
 }
 
 dependencies {
-    implementation(project(mapOf("path" to ":core_common")))
-    implementation(project(mapOf("path" to ":shopping:feature_shopping")))
+    implementation(project(":core_common"))
+    implementation(project(":shopping:feature_shopping"))
+    implementation(project(":core_auth"))
     implement(Dependencies.ktx)
     implementation(platform(Dependencies.composeBom))
     implement(Dependencies.compose)

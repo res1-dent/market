@@ -1,7 +1,7 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
-    id ("com.google.gms.google-services")
+    id("com.google.gms.google-services")
     kotlin("kapt")
 }
 
@@ -41,22 +41,21 @@ android {
 }
 
 dependencies {
-    implementation(project(mapOf("path" to ":core_common")))
+    implementation(project(":core_common"))
+    implementation(project(":shopping:core_shopping"))
+    implementation(project(":core_auth"))
     implement(Dependencies.ktx)
     implementation(Dependencies.composeBom)
     implement(Dependencies.compose)
+    debugImplementation(Dependencies.composeDebugPreview)
+    implementation(Dependencies.composePreview)
     implementation(Dependencies.navigation)
     implement(Dependencies.material)
     implementation(Dependencies.dagger)
     kapt(Dependencies.daggerCompiler)
-
-    implementation(platform("com.google.firebase:firebase-bom:32.1.0"))
-
-    // Declare the dependency for the Cloud Firestore library
-    // When using the BoM, you don't specify versions in Firebase library dependencies
-    implementation("com.google.firebase:firebase-firestore-ktx")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.6.4")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
+    implementation(platform(Dependencies.firebaseBom))
+    implement(Dependencies.firestore)
+    implementation(Dependencies.coroutines)
 }
 
 tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile::class.java).configureEach {

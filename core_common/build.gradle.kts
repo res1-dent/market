@@ -36,5 +36,9 @@ android {
 dependencies {
     implementation(kotlin("reflect"))
     implement(Dependencies.compose)
+    debugImplementation(Dependencies.composeDebugPreview)
+    implementation(Dependencies.composePreview)
+    implementation(Dependencies.material)
     implementation(Dependencies.dagger)
+    implementation(Dependencies.navigation)
 }

@@ -1,10 +1,13 @@
 package ru.hometech.core_common.di.injector
 
-abstract class ParameterlessInjector<Component : Any>: BaseInjector<Component>() {
+import kotlin.reflect.KClass
+
+abstract class ParameterlessInjector<Component : Any>(componentClass: KClass<Component>) :
+    BaseInjector<Component>(componentClass) {
     abstract fun create(): Component
     fun getOrCreate(): Component {
-        if (!storage.containsKey(componentKey)) {
-            storage.put(create(), componentKey)
+        if (!storage.containsKey(componentClass)) {
+            storage.put(create(), componentClass)
         }
         return get()
     }

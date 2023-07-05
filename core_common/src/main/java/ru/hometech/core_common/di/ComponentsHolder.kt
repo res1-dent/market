@@ -1,6 +1,6 @@
 package ru.hometech.core_common.di
 
-object ComponentsHolder {
+internal object ComponentsHolder {
 
     private val storage = DiStorageImpl()
 

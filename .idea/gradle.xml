@@ -5,18 +5,24 @@
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
         <option name="testRunner" value="GRADLE" />
-        <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleJvm" value="jbr-17" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/buildSrc" />
+            <option value="$PROJECT_DIR$/core_auth" />
+            <option value="$PROJECT_DIR$/core_auth/core_auth_api" />
+            <option value="$PROJECT_DIR$/core_auth/core_auth_impl" />
             <option value="$PROJECT_DIR$/core_common" />
             <option value="$PROJECT_DIR$/core_network" />
             <option value="$PROJECT_DIR$/core_network/core_network_api" />
             <option value="$PROJECT_DIR$/core_network/core_network_impl" />
             <option value="$PROJECT_DIR$/shopping" />
+            <option value="$PROJECT_DIR$/shopping/core_shopping" />
+            <option value="$PROJECT_DIR$/shopping/core_shopping/core_shopping_api" />
+            <option value="$PROJECT_DIR$/shopping/core_shopping/core_shopping_impl" />
             <option value="$PROJECT_DIR$/shopping/feature_shopping" />
           </set>
         </option>

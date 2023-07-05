@@ -1,15 +1,16 @@
 package ru.hometech.core_common.di.injector
 
 import ru.hometech.core_common.di.ComponentsHolder
+import kotlin.reflect.KClass
 
-abstract class BaseInjector<Component : Any> {
+abstract class BaseInjector<Component : Any>(val componentClass: KClass<Component>) {
 
-    protected val storage = ComponentsHolder.getStorage()
+    val storage = ComponentsHolder.getStorage()
 
-    protected val componentKey: String = javaClass.simpleName
-    fun get(): Component {
-        return storage.getComponent(componentKey)
-    }
+    fun get(): Component = storage.getComponent(componentClass)
 
-    fun release() = storage.release(componentKey)
+    fun release() = storage.release(componentClass)
 }
+
+inline fun <reified T : Any> BaseInjector<*>.findComponent(): T = storage.findComponent { it is T }
+

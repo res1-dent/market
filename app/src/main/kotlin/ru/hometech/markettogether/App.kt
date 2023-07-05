@@ -1,13 +1,18 @@
 package ru.hometech.markettogether
 
 import android.app.Application
-import ru.hometech.markettogether.di.MainComponent
+import com.hometech.core_auth_api.FirebaseAnonymousAuth
+import ru.hometech.markettogether.di.AppComponent
+import javax.inject.Inject
 
 class App : Application() {
 
+    @Inject
+    lateinit var auth: FirebaseAnonymousAuth
 
     override fun onCreate() {
         super.onCreate()
-        MainComponent.getOrCreate(this)
+        AppComponent.getOrCreate(this).inject(this)
+        auth.signIn()
     }
 }

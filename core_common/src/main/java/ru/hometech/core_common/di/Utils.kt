@@ -1,10 +1,10 @@
 package ru.hometech.core_common.di
 
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import javax.inject.Scope
 
-interface BaseComponent {
-    fun getViewModel(): ViewModel
+interface FeatureComponent {
+    fun getViewModelFactory(): MultiViewModelFactory
 }
 
 @Scope

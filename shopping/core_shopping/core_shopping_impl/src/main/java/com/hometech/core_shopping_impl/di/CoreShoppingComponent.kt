@@ -1,0 +1,43 @@
+package com.hometech.core_shopping_impl.di
+
+import com.example.core_shopping_api.di.CoreShoppingDependencies
+import com.hometech.core_shopping_impl.di.modules.DataModule
+import dagger.Component
+import ru.hometech.core_common.di.AppDependencies
+import ru.hometech.core_common.di.PerFeature
+import ru.hometech.core_common.di.injector.ParameterlessInjector
+import ru.hometech.core_common.di.injector.findComponent
+import ru.hometech.core_network.di.CoreNetworkDependenciesProvider
+import ru.hometech.core_network_api.di.CoreNetworkDependencies
+
+
+@PerFeature
+@Component(
+    dependencies = [
+        AppDependencies::class,
+        CoreNetworkDependencies::class
+    ],
+    modules = [
+        DataModule::class
+    ]
+)
+interface CoreShoppingComponent : CoreShoppingDependencies {
+
+    companion object CoreShoppingComponentInjector :
+        ParameterlessInjector<CoreShoppingComponent>(CoreShoppingComponent::class) {
+        override fun create(): CoreShoppingComponent {
+            return DaggerCoreShoppingComponent.builder()
+                .getAppDependencies(findComponent())
+                .getCoreNetworkDependencies(CoreNetworkDependenciesProvider.provide())
+                .build()
+        }
+    }
+
+    @Component.Builder
+    interface Builder {
+        fun getAppDependencies(dependencies: AppDependencies): Builder
+        fun getCoreNetworkDependencies(dependencies: CoreNetworkDependencies): Builder
+        fun build(): CoreShoppingComponent
+    }
+}
+

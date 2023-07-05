@@ -35,8 +35,12 @@ android {
 }
 
 dependencies {
+    api(project(":core_network:core_network_api"))
     implementation(Dependencies.dagger)
     kapt(Dependencies.daggerCompiler)
+    implementation(project(mapOf("path" to ":core_common")))
+    implementation(platform(Dependencies.firebaseBom))
+    implement(Dependencies.firestore)
 }
 
 tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile::class.java).configureEach {
