@@ -32,5 +32,5 @@ class IntentHandler @Inject constructor(
     }
 
     fun handleGetAllProductsFlow(): Flow<List<ProductUi>> =
-        getAllProductsFlow().mapIterable { productMapper.mapFromDomain(it) }
+        getAllProductsFlow().mapIterable { productMapper.mapToUi(it) }
 }

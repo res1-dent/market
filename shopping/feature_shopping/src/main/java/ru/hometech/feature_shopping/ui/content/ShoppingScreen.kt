@@ -25,7 +25,7 @@ import java.util.UUID
 @Composable
 fun ShoppingScreen() {
     val viewModel: ShoppingViewModel = obtainViewModel()
-    val viewState: ShoppingViewState by viewModel.state.collectAsState()
+    val viewState: ShoppingViewState by viewModel.uiState.collectAsState()
     Box(modifier = Modifier.fillMaxSize()) {
         val modifier = Modifier
             .align(Alignment.TopCenter)
@@ -37,7 +37,7 @@ fun ShoppingScreen() {
         }
         Button(
             onClick = {
-                viewModel.submitIntent(ShoppingIntent.AddProduct(generateProduct()))
+                viewModel.onAddProduct(generateProduct())
             },
             modifier = Modifier.align(Alignment.BottomCenter)
         ) {

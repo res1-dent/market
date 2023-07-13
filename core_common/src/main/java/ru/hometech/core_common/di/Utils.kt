@@ -1,6 +1,5 @@
 package ru.hometech.core_common.di
 
-import androidx.lifecycle.ViewModelProvider
 import javax.inject.Scope
 
 interface FeatureComponent {

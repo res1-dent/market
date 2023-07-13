@@ -9,6 +9,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
 import ru.hometech.core_common.coroutines.DispatchersProvider
@@ -21,8 +22,7 @@ class SharedProductsListRepositoryImpl @Inject constructor(
 
     override fun getAllProductsFlow(): Flow<List<ProductDo>> =
         callbackFlow {
-            val listener = remoteDb
-                .collection("Products")
+            val listener = remoteDb.collection("Products")
                 .addSnapshotListener { value, _ ->
                     value?.let { snapshot ->
                         trySend(
@@ -40,23 +40,23 @@ class SharedProductsListRepositoryImpl @Inject constructor(
 
     override suspend fun addProduct(product: ProductDo) {
         withContext(dispatchers.io) {
-            remoteDb
-                .collection("Products")
+            remoteDb.collection("Products")
                 .add(product.toDto())
                 .await()
         }
     }
 
     override suspend fun deleteProduct(productId: String): Unit = withContext(dispatchers.io) {
-        remoteDb
-            .collection("Products")
+        remoteDb.collection("Products")
             .document(productId)
             .delete().await()
     }
 
     override suspend fun setNewSearcherId(productId: String, newSearcherId: String?): Unit =
         withContext(dispatchers.io) {
-            remoteDb.collection("Products").document(productId).update("searcherId", newSearcherId)
+            remoteDb.collection("Products")
+                .document(productId)
+                .update("searcherId", newSearcherId)
                 .await()
         }
 }

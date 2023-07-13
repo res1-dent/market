@@ -29,14 +29,7 @@ fun ProductCard(
         modifier = Modifier
             .fillMaxWidth()
             .clickable {
-                viewModel.submitIntent(
-                    ShoppingIntent.UpdateSearcherId(
-                        productUi.id,
-                        EnumChangeSearcherType
-                            .values()
-                            .random()
-                    )
-                )
+
             }
     ) {
         Text(productUi.name)
@@ -48,9 +41,11 @@ fun ProductCard(
             SearchingStatus.CurrentUser -> Text(text = "Я ищу")
             SearchingStatus.None -> Text(text = "Никто не ищет")
         }
-        IconButton(onClick = {
-            viewModel.submitIntent(ShoppingIntent.DeleteProduct(productUi.id))
-        }) {
+        IconButton(
+            onClick = {
+                viewModel.deleteProductById(productUi.id)
+            }
+        ) {
             Icon(imageVector = Icons.Filled.Delete, contentDescription = null)
         }
     }

@@ -26,7 +26,7 @@ class ProductUiMapping @Inject constructor(
         )
     }
 
-    override fun mapFromDomain(domainModel: ProductDo): ProductUi = with(domainModel) {
+    override fun mapToUi(domainModel: ProductDo): ProductUi = with(domainModel) {
         ProductUi(
             id = id,
             name = name,
