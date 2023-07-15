@@ -1,1 +1,1 @@
-C:\Users\User\Desktop\markettogether\buildSrc\build\classes\kotlin\main\Dependencies.class;C:\Users\User\Desktop\markettogether\buildSrc\build\classes\kotlin\main\GradleUtilsKt.class
+/home/andrey/AndroidStudioProjects/DuoShop/market/buildSrc/build/classes/kotlin/main/Dependencies.class:/home/andrey/AndroidStudioProjects/DuoShop/market/buildSrc/build/classes/kotlin/main/GradleUtilsKt.class
