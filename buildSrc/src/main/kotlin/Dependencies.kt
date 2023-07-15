@@ -2,7 +2,7 @@ object Dependencies {
 
     const val composeCompilerVersion = "1.4.0"
 
-    private const val composeVersion = "1.7.1"
+    const val composeVersion = "1.7.1"
     private const val composeBomVersion = "2022.10.00"
     private const val composeViewModelVersion = "2.6.1"
 
@@ -27,7 +27,7 @@ object Dependencies {
 
     val ktx = listOf(
         "androidx.core:core-ktx:$coreKtxVersion",
-            "androidx.lifecycle:lifecycle-runtime-ktx:2.3.1"
+        "androidx.lifecycle:lifecycle-runtime-ktx:2.3.1"
     )
 
     private const val daggerVersion = "2.45"
@@ -47,5 +47,18 @@ object Dependencies {
         "com.google.firebase:firebase-firestore-ktx",
         "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:$coroutinesVersion"
     )
+
+    private const val retrofitVersion = "2.9.0"
+    private const val okhttpVersion = "4.9.1"
+
+    val network = listOf(
+        "com.squareup.retrofit2:retrofit:$retrofitVersion",
+        "com.squareup.retrofit2:converter-gson:$retrofitVersion",
+        "com.squareup.okhttp3:okhttp:$okhttpVersion",
+        "com.squareup.okhttp3:logging-interceptor:$okhttpVersion"
+    )
+
+
+    //const val gson = "com.google.code.gson:gson:2.8.8"
 
 }

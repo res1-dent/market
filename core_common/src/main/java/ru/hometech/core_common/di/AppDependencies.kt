@@ -6,4 +6,5 @@ import ru.hometech.core_common.coroutines.DispatchersProvider
 interface AppDependencies {
     fun getContext(): Context
     fun getDispatchersProvider(): DispatchersProvider
+
 }

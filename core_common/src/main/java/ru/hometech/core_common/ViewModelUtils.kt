@@ -7,20 +7,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import ru.hometech.core_common.di.FeatureComponent
 
-val LocalViewModel = compositionLocalOf<ViewModel?> { null }
-
 @Composable
-inline fun <reified T : FeatureComponent, reified VM : ViewModel> createScreenWithDaggerViewModel(
+inline fun <reified T : FeatureComponent, reified VM : ViewModel, reified A : Action, reified S : State> createScreenWithDaggerMviViewModel(
     component: T,
-    crossinline content: @Composable () -> Unit
+    crossinline content: @Composable (viewModel: VM) -> Unit
 ) {
-    val viewModel = viewModel(key = T::class.java.name) { component.getViewModelFactory().create(VM::class.java) }
-    CompositionLocalProvider(LocalViewModel provides viewModel) {
-        content()
-    }
+    val viewModel = viewModel(key = T::class.java.name) {
+        component.getViewModelFactory().create(VM::class.java)
+    } as BaseViewModel<S, A>
+
+    content(viewModel as VM)
 }
-@Composable
-inline fun <reified VM : ViewModel> obtainViewModel(): VM =
-    checkNotNull(LocalViewModel.current as? VM){
-        "Cant cast ${VM::class.java} to ${LocalViewModel.current?.javaClass}"
-    }

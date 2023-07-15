@@ -14,5 +14,5 @@ interface SharedProductsListRepository {
 
     suspend fun deleteProduct(productId: String)
 
-    suspend fun setNewSearcherId(productId: String, newSearcherId: String?)
+    suspend fun updateProduct(productDo: ProductDo)
 }

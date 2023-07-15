@@ -56,8 +56,11 @@ android {
 
 dependencies {
     implementation(project(":core_common"))
-    implementation(project(":shopping:feature_shopping"))
     implementation(project(":core_auth"))
+    implementation(project(":core_network"))
+    implementation(project(":shopping:feature_shopping"))
+    implementation(project(":rus_quality:feature_rus_quality"))
+
     implement(Dependencies.ktx)
     implementation(platform(Dependencies.composeBom))
     implement(Dependencies.compose)

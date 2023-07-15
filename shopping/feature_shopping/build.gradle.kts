@@ -44,6 +44,8 @@ dependencies {
     implementation(project(":core_common"))
     implementation(project(":shopping:core_shopping"))
     implementation(project(":core_auth"))
+    implementation(project(":core_network"))
+
     implement(Dependencies.ktx)
     implementation(Dependencies.composeBom)
     implement(Dependencies.compose)

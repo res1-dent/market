@@ -38,7 +38,7 @@ dependencies {
     api(project(":core_auth:core_auth_api"))
     implementation(Dependencies.dagger)
     kapt(Dependencies.daggerCompiler)
-    implementation(project(mapOf("path" to ":core_common")))
+    implementation(project(":core_common"))
     implementation(platform(Dependencies.firebaseBom))
     implementation(Dependencies.firebaseAuth)
     implementation(Dependencies.coroutines)

@@ -2,6 +2,7 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    kotlin("kapt")
 }
 
 android {
@@ -40,5 +41,12 @@ dependencies {
     implementation(Dependencies.composePreview)
     implementation(Dependencies.material)
     implementation(Dependencies.dagger)
+    kapt(Dependencies.daggerCompiler)
     implementation(Dependencies.navigation)
+}
+
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile::class.java).configureEach {
+    kotlinOptions {
+        jvmTarget = "11"
+    }
 }

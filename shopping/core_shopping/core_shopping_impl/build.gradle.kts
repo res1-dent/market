@@ -37,6 +37,7 @@ android {
 dependencies {
     api(project(":shopping:core_shopping:core_shopping_api"))
     implementation(project(":core_network"))
+    implementation(project(":core_auth"))
     implementation(Dependencies.dagger)
     kapt(Dependencies.daggerCompiler)
     implementation(project(mapOf("path" to ":core_common")))

@@ -14,7 +14,7 @@ class ProductUiMapping @Inject constructor(
 ) : UiMapper<ProductUi, ProductDo> {
 
 
-    override fun mapToDomain(uiModel: ProductUi): ProductDo = with(uiModel) {
+    override fun toDo(uiModel: ProductUi): ProductDo = with(uiModel) {
         return ProductDo(
             id = id,
             name = name,
@@ -26,7 +26,7 @@ class ProductUiMapping @Inject constructor(
         )
     }
 
-    override fun mapToUi(domainModel: ProductDo): ProductUi = with(domainModel) {
+    override fun toUi(domainModel: ProductDo): ProductUi = with(domainModel) {
         ProductUi(
             id = id,
             name = name,

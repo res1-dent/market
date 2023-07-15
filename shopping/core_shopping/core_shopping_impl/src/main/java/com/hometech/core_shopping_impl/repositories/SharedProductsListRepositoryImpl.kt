@@ -2,14 +2,12 @@ package com.hometech.core_shopping_impl.repositories
 
 import com.example.core_shopping_api.models.ProductDo
 import com.example.core_shopping_api.models.ProductDto
-import com.example.core_shopping_api.models.toDo
-import com.example.core_shopping_api.models.toDto
 import com.example.core_shopping_api.repositories.SharedProductsListRepository
 import com.google.firebase.firestore.FirebaseFirestore
+import com.hometech.core_shopping_impl.mapping.ProductDataMapping
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
-import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
 import ru.hometech.core_common.coroutines.DispatchersProvider
@@ -17,6 +15,7 @@ import javax.inject.Inject
 
 class SharedProductsListRepositoryImpl @Inject constructor(
     private val remoteDb: FirebaseFirestore,
+    private val productDataMapping: ProductDataMapping,
     private val dispatchers: DispatchersProvider,
 ) : SharedProductsListRepository {
 
@@ -28,7 +27,7 @@ class SharedProductsListRepositoryImpl @Inject constructor(
                         trySend(
                             snapshot.map { document ->
                                 document.toObject(ProductDto::class.java)
-                                    .copy(id = document.id).toDo()
+                                    .copy(id = document.id).let { productDataMapping.toDo(it) }
                             }
                         )
                     }
@@ -41,7 +40,7 @@ class SharedProductsListRepositoryImpl @Inject constructor(
     override suspend fun addProduct(product: ProductDo) {
         withContext(dispatchers.io) {
             remoteDb.collection("Products")
-                .add(product.toDto())
+                .add(productDataMapping.toDto(product))
                 .await()
         }
     }
@@ -52,11 +51,12 @@ class SharedProductsListRepositoryImpl @Inject constructor(
             .delete().await()
     }
 
-    override suspend fun setNewSearcherId(productId: String, newSearcherId: String?): Unit =
+    override suspend fun updateProduct(productDo: ProductDo): Unit =
         withContext(dispatchers.io) {
+            val productDto = productDataMapping.toDto(productDo)
             remoteDb.collection("Products")
-                .document(productId)
-                .update("searcherId", newSearcherId)
+                .document(productDto.id)
+                .set(productDto)
                 .await()
         }
 }

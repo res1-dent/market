@@ -34,6 +34,6 @@ android {
 }
 
 dependencies {
-    implementation(project(mapOf("path" to ":core_common")))
+    implementation(project(":core_common"))
     implementation(platform(Dependencies.firebaseBom))
 }

@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">markettogether</string>
-    <string name="shopping">DuoShop\n</string>
+    <string name="shopping">DuoShop</string>
+    <string name="rusQuality">RusQuality</string>
 </resources>

@@ -2,6 +2,7 @@ package com.hometech.core_shopping_impl.di
 
 import com.example.core_shopping_api.di.CoreShoppingDependencies
 import com.hometech.core_shopping_impl.di.modules.DataModule
+import com.hometech.core_shopping_impl.di.modules.DomainModule
 import dagger.Component
 import ru.hometech.core_common.di.AppDependencies
 import ru.hometech.core_common.di.PerFeature
@@ -18,6 +19,7 @@ import ru.hometech.core_network_api.di.CoreNetworkDependencies
         CoreNetworkDependencies::class
     ],
     modules = [
+        DomainModule::class,
         DataModule::class
     ]
 )

@@ -16,8 +16,4 @@ interface UiModule {
             return ProductUiMapping(authHolder.getUserId())
         }
     }
-/*
-    @PerFeature
-    @Binds
-    fun provideIntentProcessor(impl: ShoppingIntentProcessor): IntentProcessor<ShoppingViewState, ShoppingIntent>*/
 }
