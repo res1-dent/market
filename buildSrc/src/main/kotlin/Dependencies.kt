@@ -14,6 +14,9 @@ object Dependencies {
         "androidx.lifecycle:lifecycle-viewmodel-compose:$composeViewModelVersion"
     )
 
+    private const val coilVersion = "2.4.0"
+    const val coil = "io.coil-kt:coil-compose:$coilVersion"
+
     const val composePreview = "androidx.compose.ui:ui-tooling-preview"
     const val composeDebugPreview = "androidx.compose.ui:ui-tooling"
 

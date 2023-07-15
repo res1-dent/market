@@ -54,6 +54,7 @@ dependencies {
     implementation(Dependencies.dagger)
     kapt(Dependencies.daggerCompiler)
     implementation(Dependencies.coroutines)
+    implementation(Dependencies.coil)
 }
 
 tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile::class.java).configureEach {

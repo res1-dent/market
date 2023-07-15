@@ -32,7 +32,13 @@ sealed class ProductInfoState : State {
 class ProductInfoReducer @Inject constructor() : Reducer<ProductInfoState, ProductInfoAction> {
 
     override fun reduce(state: ProductInfoState, action: ProductInfoAction): ProductInfoState {
-        return state
+        return when (action) {
+            is ProductInfoAction.GetRusQualityProduct -> {
+                if (state is ProductInfoState.Initial)
+                    ProductInfoState.Loading
+                else state
+            }
+        }
     }
 
 }
