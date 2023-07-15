@@ -10,9 +10,8 @@ import ru.hometech.feature_rus_quality.ui.state.ProductInfoState
 
 
 @Composable
-fun ProductInfoScreen(viewModel: ProductInfoViewModel) {
-    val state by viewModel.uiState.collectAsState()
-    viewModel.dispatch(ProductInfoAction.GetRusQualityProduct("4607036521828"))
+fun ProductInfoScreen(state: ProductInfoState, onDispatch: (ProductInfoAction) -> Unit) {
+    onDispatch(ProductInfoAction.GetRusQualityProduct("4607036521828"))
     when (state) {
         ProductInfoState.Initial -> {
             Text(text = "Initial")
@@ -21,7 +20,7 @@ fun ProductInfoScreen(viewModel: ProductInfoViewModel) {
             Text(text = "Loading")
         }
         is ProductInfoState.Success -> {
-            Text(text = (state as ProductInfoState.Success).productInfo.toString())
+            Text(text = state.productInfo.toString())
         }
     }
 

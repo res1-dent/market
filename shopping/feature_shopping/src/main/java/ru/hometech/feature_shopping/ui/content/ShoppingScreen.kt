@@ -22,12 +22,6 @@ import ru.hometech.marketgotogether.R
 import java.util.UUID
 
 @Composable
-fun ShoppingScreen(viewModel: ShoppingViewModel) {
-    val viewState: ShoppingState by viewModel.uiState.collectAsState()
-    ShoppingScreen(viewState = viewState, viewModel::dispatch)
-}
-
-@Composable
 fun ShoppingScreen(
     viewState: ShoppingState,
     onDispatch: (ShoppingAction) -> Unit
