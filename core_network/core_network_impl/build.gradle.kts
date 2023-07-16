@@ -42,6 +42,7 @@ dependencies {
     implementation(platform(Dependencies.firebaseBom))
     implement(Dependencies.firestore)
     implement(Dependencies.network)
+    implementation(Dependencies.gson)
 }
 
 tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile::class.java).configureEach {

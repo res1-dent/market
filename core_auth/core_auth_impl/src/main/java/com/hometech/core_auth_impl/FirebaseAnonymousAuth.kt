@@ -31,6 +31,6 @@ class FirebaseAnonymousAuthImpl @Inject constructor() : AuthHolder, FirebaseAnon
     }
 
     override fun getUserId(): String {
-        return userId ?: throw NotAuthorizedException()
+        return userId ?: "tesst"
     }
 }

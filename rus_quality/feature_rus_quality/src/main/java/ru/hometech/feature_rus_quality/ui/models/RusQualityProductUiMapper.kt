@@ -2,6 +2,8 @@ package ru.hometech.feature_rus_quality.ui.models
 
 import ru.hometech.core_common.UiMapper
 import ru.hometech.core_common.di.PerFeature
+import ru.hometech.core_network_api.models.ProductInfoDTOI
+import ru.hometech.core_rus_quality_api.models.ProductInfoDo
 import ru.hometech.core_rus_quality_api.models.ResearchDO
 import ru.hometech.core_rus_quality_api.models.RusQualityProductDO
 import javax.inject.Inject
@@ -27,9 +29,14 @@ class RusQualityProductUiMapper @Inject constructor() : UiMapper<RusQualityProdu
             worth = worth,
             disadvantage = disadvantage,
             thumbnail = thumbnail,
-            price = price
+            price = price,
+            productInfo = productInfo.map { it.toDo() }
         )
     }
+
+    private fun ProductInfoDo.toUi(): ProductInfoUi = ProductInfoUi(name, value)
+
+    private fun ProductInfoUi.toDo(): ProductInfoDo = ProductInfoDo(name, value)
 
     override fun toUi(domainModel: RusQualityProductDO): RusQualityProductUi = with(domainModel) {
         return RusQualityProductUi(
@@ -46,10 +53,11 @@ class RusQualityProductUiMapper @Inject constructor() : UiMapper<RusQualityProdu
                 research.image,
                 research.date
             ),
-            worth = worth,
-            disadvantage = disadvantage,
+            worth = worth.orEmpty(),
+            disadvantage = disadvantage.orEmpty(),
             thumbnail = thumbnail,
-            price = price
+            price = price,
+            productInfo = productInfo.map { it.toUi() }
         )
     }
 }

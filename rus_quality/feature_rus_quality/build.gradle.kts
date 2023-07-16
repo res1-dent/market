@@ -43,6 +43,7 @@ dependencies {
     implementation(project(":core_common"))
     implementation(project(":rus_quality:core_rus_quality"))
     implementation(project(":core_network"))
+    implementation("androidx.camera:camera-view:1.2.3")
 
     implement(Dependencies.ktx)
     implementation(Dependencies.composeBom)

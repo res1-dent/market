@@ -60,8 +60,10 @@ object Dependencies {
         "com.squareup.okhttp3:okhttp:$okhttpVersion",
         "com.squareup.okhttp3:logging-interceptor:$okhttpVersion"
     )
+    private const val gsonVersion = "2.10.1"
+    const val gson =  "com.google.code.gson:gson:$gsonVersion"
 
-
-    //const val gson = "com.google.code.gson:gson:2.8.8"
+    private const val barcodeVersion = "17.1.0"
+    const val barcodeAnalyzer = "com.google.mlkit:barcode-scanning:$barcodeVersion"
 
 }
