@@ -9,13 +9,13 @@ import ru.hometech.core_common.NavigationDestination
 import ru.hometech.marketgotogether.R
 
 sealed class MainGraph(destination: String): NavigationDestination(destination) {
-    object ShoppingScreen : MainGraph("ShoppingScreen")
-    object RusQualityScreen: MainGraph("RusQualityScreen")
+    object ShoppingGraph : MainGraph("ShoppingGraph")
+    object RusQualityGraph: MainGraph("RusQualityGraph")
 }
 
 sealed class Screen(val destination: NavigationDestination, @StringRes val resourceId: Int, val icon: ImageVector) {
 
-    object Shopping : Screen(MainGraph.ShoppingScreen, R.string.shopping, Icons.Filled.ShoppingCart)
+    object Shopping : Screen(MainGraph.ShoppingGraph, R.string.shopping, Icons.Filled.ShoppingCart)
 
-    object RusQuality: Screen(MainGraph.RusQualityScreen, R.string.rusQuality, Icons.Filled.Star)
+    object RusQuality: Screen(MainGraph.RusQualityGraph, R.string.rusQuality, Icons.Filled.Star)
 }

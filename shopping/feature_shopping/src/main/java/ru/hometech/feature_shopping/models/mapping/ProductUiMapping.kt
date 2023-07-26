@@ -1,8 +1,8 @@
 package ru.hometech.feature_shopping.models.mapping
 
 import androidx.annotation.StringRes
-import com.example.core_shopping_api.models.EnumAmountType
-import com.example.core_shopping_api.models.ProductDo
+import com.hometech.core_shopping.api.models.EnumAmountType
+import com.hometech.core_shopping.api.models.ProductDo
 import ru.hometech.core_common.UiMapper
 import ru.hometech.feature_shopping.models.ProductUi
 import ru.hometech.feature_shopping.models.SearchingStatus

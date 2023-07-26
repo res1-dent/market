@@ -1,6 +1,7 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    kotlin("kapt")
 }
 
 android {
@@ -36,9 +37,13 @@ android {
 }
 
 dependencies {
+    implementation(project(":core_network"))
+    implementation(project(":core_auth"))
+    implementation(Dependencies.dagger)
+    kapt(Dependencies.daggerCompiler)
     implementation(project(":core_common"))
-    api(project(":shopping:core_shopping:core_shopping_api"))
-    implementation(project(":shopping:core_shopping:core_shopping_impl"))
+    implementation(platform(Dependencies.firebaseBom))
+    implement(Dependencies.firestore)
 }
 
 tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile::class.java).configureEach {

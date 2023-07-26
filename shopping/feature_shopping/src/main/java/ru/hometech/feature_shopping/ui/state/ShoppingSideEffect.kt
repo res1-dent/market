@@ -1,6 +1,6 @@
 package ru.hometech.feature_shopping.ui.state
 
-import com.example.core_shopping_api.usecases.ShoppingUseCases
+import com.hometech.core_shopping.api.usecases.ShoppingUseCases
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.FlowCollector
 import kotlinx.coroutines.flow.flow

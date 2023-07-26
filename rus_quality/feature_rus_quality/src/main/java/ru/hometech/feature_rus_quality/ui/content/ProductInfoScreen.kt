@@ -44,7 +44,7 @@ import ru.hometech.feature_rus_quality.ui.state.ProductInfoState
 @Composable
 fun ProductInfoScreen(state: ProductInfoState, onDispatch: (ProductInfoAction) -> Unit) {
     Column(Modifier.fillMaxSize()) {
-
+        onDispatch(ProductInfoAction.GetRusQualityProduct("12321312"))
         when (state) {
             ProductInfoState.Initial -> {
                 CameraPreview(

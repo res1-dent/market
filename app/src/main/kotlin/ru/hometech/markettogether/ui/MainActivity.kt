@@ -41,10 +41,10 @@ class MainActivity : ComponentActivity() {
                     ) {
                         NavHost(
                             navController = navController,
-                            startDestination = MainGraph.ShoppingScreen.route
+                            startDestination = MainGraph.ShoppingGraph.route
                         ) {
-                            shoppingGraph(navController, MainGraph.ShoppingScreen.route)
-                            rusQualityGraph(navController, MainGraph.RusQualityScreen.route)
+                            shoppingGraph(navController, MainGraph.ShoppingGraph.route)
+                            rusQualityGraph(navController, MainGraph.RusQualityGraph.route)
                         }
                     }
                 }

@@ -1,13 +1,12 @@
 package ru.hometech.feature_shopping.di
 
-import com.example.core_shopping_api.di.CoreShoppingDependencies
 import com.hometech.core_auth.CoreAuthDependenciesProvider
 import com.hometech.core_auth_api.di.CoreAuthDependencies
 import com.hometech.core_shopping.CoreShoppingDependenciesProvider
+import com.hometech.core_shopping.api.di.CoreShoppingDependencies
 import dagger.Component
 import ru.hometech.core_common.di.AppDependencies
 import ru.hometech.core_common.di.FeatureComponent
-import ru.hometech.core_common.di.MultiViewModelFactory
 import ru.hometech.core_common.di.PerFeature
 import ru.hometech.core_common.di.injector.ParameterlessInjector
 import ru.hometech.core_common.di.injector.findComponent
