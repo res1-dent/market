@@ -2,10 +2,10 @@ package ru.hometech.core_rus_quality_impl.mapping
 
 import ru.hometech.core_common.DataMapper
 import ru.hometech.core_common.di.PerFeature
-import ru.hometech.core_network_api.models.ProductInfoDTOI
-import ru.hometech.core_network_api.models.ResearchDTOI
-import ru.hometech.core_network_api.models.RusQualityProductDTOI
-import ru.hometech.core_network_api.models.RusQualityProductResponseDTOI
+import ru.hometech.core_network.api.models.ProductInfoDTOI
+import ru.hometech.core_network.api.models.ResearchDTOI
+import ru.hometech.core_network.api.models.RusQualityProductDTOI
+import ru.hometech.core_network.api.models.RusQualityProductResponseDTOI
 import ru.hometech.core_rus_quality_api.models.ProductInfoDo
 import ru.hometech.core_rus_quality_api.models.ResearchDO
 import ru.hometech.core_rus_quality_api.models.RusQualityProductDO

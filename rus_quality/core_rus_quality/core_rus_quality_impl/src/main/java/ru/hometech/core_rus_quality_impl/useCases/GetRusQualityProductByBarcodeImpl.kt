@@ -1,8 +1,8 @@
 package ru.hometech.core_rus_quality_impl.useCases
 
 import ru.hometech.core_common.di.PerFeature
-import ru.hometech.core_network_api.repositories.RusQualityRepository
-import ru.hometech.core_network_api.exceptions.RusQualityProductNotFound
+import ru.hometech.core_network.api.repositories.RusQualityRepository
+import ru.hometech.core_network.api.exceptions.RusQualityProductNotFound
 import ru.hometech.core_rus_quality_api.models.Barcode
 import ru.hometech.core_rus_quality_api.models.RusQualityProductDO
 import ru.hometech.core_rus_quality_api.useCases.RusQualityUseCases

@@ -1,6 +1,7 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    kotlin("kapt")
 }
 
 android {
@@ -37,8 +38,12 @@ android {
 
 dependencies {
     implementation(project(":core_common"))
-    api(project(":core_network:core_network_api"))
-    implementation(project(":core_network:core_network_impl"))
+    implementation(Dependencies.dagger)
+    kapt(Dependencies.daggerCompiler)
+    implementation(platform(Dependencies.firebaseBom))
+    implement(Dependencies.firestore)
+    implementation(Dependencies.gson)
+    implement(Dependencies.network)
 }
 
 tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile::class.java).configureEach {

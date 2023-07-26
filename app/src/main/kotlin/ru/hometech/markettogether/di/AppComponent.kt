@@ -9,7 +9,7 @@ import ru.hometech.core_common.di.AppDependencies
 import ru.hometech.core_common.di.AppScope
 import ru.hometech.core_common.di.FeatureComponent
 import ru.hometech.core_common.di.injector.Injector
-import ru.hometech.core_network_api.di.CoreNetworkDependencies
+import ru.hometech.core_network.api.di.CoreNetworkDependencies
 import ru.hometech.markettogether.App
 import ru.hometech.markettogether.di.modules.AppModule
 import ru.hometech.markettogether.di.modules.ViewModelModule

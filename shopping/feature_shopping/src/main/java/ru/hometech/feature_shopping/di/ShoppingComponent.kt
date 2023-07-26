@@ -11,7 +11,7 @@ import ru.hometech.core_common.di.PerFeature
 import ru.hometech.core_common.di.injector.ParameterlessInjector
 import ru.hometech.core_common.di.injector.findComponent
 import ru.hometech.core_network.di.CoreNetworkDependenciesProvider
-import ru.hometech.core_network_api.di.CoreNetworkDependencies
+import ru.hometech.core_network.api.di.CoreNetworkDependencies
 import ru.hometech.feature_shopping.di.modules.ViewModelModule
 
 

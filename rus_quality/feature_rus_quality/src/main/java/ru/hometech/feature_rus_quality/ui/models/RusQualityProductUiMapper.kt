@@ -2,7 +2,7 @@ package ru.hometech.feature_rus_quality.ui.models
 
 import ru.hometech.core_common.UiMapper
 import ru.hometech.core_common.di.PerFeature
-import ru.hometech.core_network_api.models.ProductInfoDTOI
+import ru.hometech.core_network.api.models.ProductInfoDTOI
 import ru.hometech.core_rus_quality_api.models.ProductInfoDo
 import ru.hometech.core_rus_quality_api.models.ResearchDO
 import ru.hometech.core_rus_quality_api.models.RusQualityProductDO
