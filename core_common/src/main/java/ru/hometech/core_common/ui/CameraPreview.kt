@@ -93,7 +93,7 @@ fun CameraPreview(modifier: Modifier = Modifier, onDispatch: (barcode: String) -
                                     imageAnalysis
                                 )
                             } catch (e: Exception) {
-                                Log.d("CameraPreview", "CameraPreview: ${e.localizedMessage}")
+                                Log.d("CameraPreview", "CameraPrevie: ${e.localizedMessage}")
                             }
                         }, ContextCompat.getMainExecutor(context)
                     )
